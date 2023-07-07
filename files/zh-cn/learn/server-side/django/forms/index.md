@@ -154,7 +154,7 @@ Django 提供了许多可以验证数据的地方。验证单个字段的最简�
 from django import forms
 
 from django.core.exceptions import ValidationError
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ngettext_lazy as _
 import datetime #for checking renewal date range.
 
 class RenewBookForm(forms.Form):
@@ -350,7 +350,7 @@ def renew_book_librarian(request, pk):
 
     <h1>Renew: \{{bookinst.book.title}}</h1>
     <p>Borrower: \{{bookinst.borrower}}</p>
-    <p{% if bookinst.is_overdue %} class="text-danger"{% endif %}>Due date: \{{bookinst.due_back}}</p>
+    <p>{% if bookinst.is_overdue %} class="text-danger"{% endif %}>Due date: \{{bookinst.due_back}}</p>
 
     <form action="" method="post">
         {% csrf_token %}
